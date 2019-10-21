@@ -28,9 +28,8 @@ export default class Navbar extends Component {
       })
       .catch(err => alert(err));
   };
+
   render() {
-    // const currentUser = Auth.currentAuthenticatedUser();
-    // this.state.username = currentUser.username;
     return (
       <div style={{ backgroundColor: "#C0C0C0" }}>
         <Container>
@@ -52,9 +51,9 @@ export default class Navbar extends Component {
                 </Nav.Item>
               </Nav>
             </Col>
-            {/* <Col md="auto">
-              <h5> User: {this.props.username}</h5>
-            </Col> */}
+            <Col md="auto">
+              <h5>Logged in as {this.props.name}</h5>
+            </Col>
             <Col md="auto">
               <Button onClick={this.signOut} href="/" className="signOutButton">
                 SignOut

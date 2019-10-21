@@ -14,16 +14,15 @@ export default class DeleteButton extends Component {
   render() {
     let Close = () => {
       this.setState({ open: false });
-      this.props.reloadFileList();
     };
     let handleShow = () => {
       this.setState({ open: true });
-      alert(this.state.name);
     };
     let Confirm = () => {
-      this.setState({ open: false });
-      ApiServices.deleteFile(this.state.name, this.state.filename);
-      this.props.reloadFileList();
+      ApiServices.deleteFile(this.state.name, this.state.filename).then(res => {
+        this.setState({ open: false });
+        this.props.reloadFileList();
+      });
     };
 
     return (
@@ -41,7 +40,7 @@ export default class DeleteButton extends Component {
             <Button variant="secondary" onClick={Close}>
               Close
             </Button>
-            <Button variant="primary" onClick={Close}>
+            <Button variant="primary" onClick={Confirm}>
               Confirm
             </Button>
           </Modal.Footer>

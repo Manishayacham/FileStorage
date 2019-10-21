@@ -7,24 +7,39 @@ export default class UpdateButton extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: this.props.name,
-      filename: this.props.filename
+      username: this.props.username,
+      oldFileName: this.props.oldFileName,
+      description: "",
+      file: ""
     };
   }
+
+  onChange = e => {
+    this.setState({ file: e.target.files[0] });
+  };
+  onChangedesc = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
   render() {
     let Close = () => {
       this.setState({ open: false });
-      this.props.reloadFileList();
     };
     let handleShow = () => {
       this.setState({ open: true });
-      alert(this.state.name);
-
-      ///ApiServices.updatefile(this.state.name, this.state.filename);
     };
-    let Confirm = () => {
-      this.setState({ open: false });
-      this.props.reloadFileList();
+    let Upload = () => {
+      let formData = new FormData();
+      formData.append("file", this.state.file);
+      formData.append("username", this.state.username);
+      formData.append("description", this.state.description);
+      formData.append("oldFileName", this.state.oldFileName);
+
+      ApiServices.updateFile(formData).then(res => {
+        this.setState({ open: false });
+        this.props.reloadFileList();
+        alert("hi");
+      });
     };
 
     return (
@@ -53,7 +68,7 @@ export default class UpdateButton extends Component {
             <Button variant="secondary" onClick={Close}>
               Close
             </Button>
-            <Button variant="primary" onClick={Close}>
+            <Button variant="primary" onClick={Upload}>
               Upload
             </Button>
           </Modal.Footer>

@@ -12,24 +12,29 @@ export default class UploadFilePage extends Component {
     this.state = {
       file: "",
       username: "",
-      description: ""
+      description: "",
+      isLoading: false
     };
   }
 
-  uploadFile = async e => {
-    e.preventDefault();
+  retriveUser = async () => {
     const currentUser = await Auth.currentAuthenticatedUser();
     this.state.username = currentUser.username;
     alert(this.state.username);
+  };
+
+  uploadFile = async e => {
+    e.preventDefault();
+    this.setState({ isLoading: true });
+    const currentUser = await Auth.currentAuthenticatedUser();
+    this.state.username = currentUser.username;
     let formData = new FormData();
     formData.append("file", this.state.file);
     formData.append("username", this.state.username);
     formData.append("description", this.state.description);
 
-    alert("uploading...");
-
     ApiServices.addfile(formData).then(res => {
-      alert(res.data);
+      this.setState({ isLoading: false });
     });
   };
 
@@ -41,10 +46,11 @@ export default class UploadFilePage extends Component {
   };
 
   render() {
+    this.retriveUser();
     return (
       <div>
         <Container>
-          <Navbar />
+          <Navbar user={this.retriveUser} />
           <Row className="justify-content-md-center">
             <form onSubmit={this.uploadFile}>
               <h1>File Upload</h1>
@@ -59,7 +65,14 @@ export default class UploadFilePage extends Component {
               />
               <br />
               <br />
-              <Button type="submit">Upload</Button>
+              {/* <Button type="submit">Upload</Button> */}
+              <Button
+                variant="primary"
+                disabled={this.state.isLoading}
+                type="submit"
+              >
+                {this.state.isLoading ? "Loading…" : "Upload"}
+              </Button>
             </form>
           </Row>
         </Container>

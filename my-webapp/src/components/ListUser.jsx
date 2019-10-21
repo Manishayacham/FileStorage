@@ -12,7 +12,7 @@ export default class ListUser extends Component {
     super(props);
     this.state = {
       userAndFileDatas: [],
-      username: "prash"
+      username: ""
     };
   }
   componentDidMount() {
@@ -31,7 +31,7 @@ export default class ListUser extends Component {
     return (
       <div>
         <Container>
-          <Navbar />
+          <Navbar name={this.state.username} />
           <br />
           <h2>List Of Files</h2>
           <br />
@@ -70,8 +70,8 @@ export default class ListUser extends Component {
                   </td>
                   <td>
                     <UpdateButton
-                      name={userAndFileData.username}
-                      filename={userAndFileData.keyName}
+                      username={userAndFileData.username}
+                      oldFileName={userAndFileData.keyName}
                       reloadFileList={this.reloadFileList}
                     />
                   </td>
