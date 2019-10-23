@@ -1,1 +1,3 @@
 my-webapp/node_modules
+my-webapp/build/
+my-webapp/npm-debug.log
