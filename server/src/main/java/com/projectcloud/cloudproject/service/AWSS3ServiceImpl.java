@@ -45,7 +45,7 @@ public class AWSS3ServiceImpl implements AWSS3Service{
         this.s3client =  AmazonS3ClientBuilder
         		  .standard()
         		  .withCredentials(new AWSStaticCredentialsProvider(awsCredss))
-        		  .withRegion(Regions.US_WEST_2)
+        		  .withRegion(Regions.US_EAST_1)
         		  .build();
     }
 	

@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.time.Instant;
+import java.util.Date;
 import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -20,7 +22,7 @@ import com.projectcloud.cloudproject.service.AWSS3ServiceImpl;
 @CrossOrigin(origins = "*")
 public class AWSS3Controller {
 	
-	//Logger logger = Logger.getLogger("mylog"); 
+	Logger logger = Logger.getLogger("mylog"); 
 	@Autowired	
 	private AWSS3ServiceImpl s3Service;
 	
@@ -40,7 +42,7 @@ public class AWSS3Controller {
 	        return this.s3Service.uploadFileToS3(file, userFile);
 		}catch (Exception e) {
 			e.printStackTrace();
-			//logger.log(Level.SEVERE, "upload failed");
+			logger.log(Level.SEVERE, "upload failed");
 		}
 		
 		return "File upload failed";
@@ -63,7 +65,7 @@ public class AWSS3Controller {
 			return this.s3Service.adminList();
 		}catch (Exception e) {
 			e.printStackTrace();
-			//logger.log(Level.SEVERE, "retrieving list failed");
+			logger.log(Level.SEVERE, "retrieving list failed");
 		}
 		return null;
     }
@@ -76,7 +78,7 @@ public class AWSS3Controller {
 			return  this.s3Service.deleteFile(username,filename);
 		}catch (Exception e) {
 			e.printStackTrace();
-			//logger.log(Level.SEVERE, "delete failed");
+			logger.log(Level.SEVERE, "delete failed");
 		}
 		return "delete failed";
     }
@@ -86,7 +88,7 @@ public class AWSS3Controller {
 	
 	@RequestMapping(value = "/updateFile", method = RequestMethod.POST)
     public String updateFile( MultipartFile file,
-        @RequestParam String username, @RequestParam String description, @RequestParam String oldFileName) throws IOException {
+        @RequestParam String username, @RequestParam String description, @RequestParam String oldFileName,  @RequestParam String uploadTime) throws IOException {
 		
 		String message = "Update failed";
 		
@@ -97,7 +99,9 @@ public class AWSS3Controller {
 				UserAndFileData userFile = new UserAndFileData();
 				userFile.setUsername(username);
 				userFile.setDescription(description);
-				userFile.setUploadTime(DateTime.now().toDate());
+				Date date = Date.from(Instant.parse(uploadTime));
+				userFile.setUploadTime(date);
+				userFile.setUpdateTime(DateTime.now().toDate());
 				userFile.setKeyName(file.getOriginalFilename());
 				userFile.setSizeOfFile(file.getSize());
 		        this.s3Service.uploadFileToS3(file, userFile);
@@ -107,7 +111,7 @@ public class AWSS3Controller {
 		        return message;
 			}catch (Exception e) {
 				e.printStackTrace();
-				//logger.log(Level.SEVERE, "delete failed");
+				logger.log(Level.SEVERE, "delete failed");
 			}
 			
 			return "update failed";
