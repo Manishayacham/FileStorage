@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const USER_URL = "http://127.0.0.1:8080";
+const USER_URL = "http://ec2-34-238-85-173.compute-1.amazonaws.com:8080";
 
 class ApiServices {
   addRegistery(user) {
