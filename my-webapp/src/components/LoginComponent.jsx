@@ -47,11 +47,11 @@ export default withAuthenticator(LoginComponent, {
     signUpFields: [
       {
         label: "First Name",
-        key: "FirstName",
+        key: "name",
         required: false,
         type: "string"
       },
-      { label: "Last Name", key: "Last Name", required: false, type: "string" }
+      { label: "Last Name", key: "name", required: false, type: "string" }
     ]
   }
 });

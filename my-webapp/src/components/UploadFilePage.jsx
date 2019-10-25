@@ -20,22 +20,27 @@ export default class UploadFilePage extends Component {
   retriveUser = async () => {
     const currentUser = await Auth.currentAuthenticatedUser();
     this.state.username = currentUser.username;
-    alert(this.state.username);
   };
 
   uploadFile = async e => {
     e.preventDefault();
-    this.setState({ isLoading: true });
-    const currentUser = await Auth.currentAuthenticatedUser();
-    this.state.username = currentUser.username;
-    let formData = new FormData();
-    formData.append("file", this.state.file);
-    formData.append("username", this.state.username);
-    formData.append("description", this.state.description);
+     if (this.state.file.size >= 1000000) {
+      alert("Please select a file with size less than 10 MB");
+    } else {
+      this.setState({ isLoading: true });
+      const currentUser = await Auth.currentAuthenticatedUser();
+      this.state.username = currentUser.username;
+      let formData = new FormData();
+      formData.append("file", this.state.file);
+      formData.append("username", this.state.username);
+      formData.append("description", this.state.description);
 
-    ApiServices.addfile(formData).then(res => {
-      this.setState({ isLoading: false });
-    });
+      ApiServices.addfile(formData).then(res => {
+        alert(res.data);
+        window.location.reload(false);
+        this.setState({ isLoading: false });
+      });
+    }
   };
 
   onChange = e => {
@@ -71,7 +76,7 @@ export default class UploadFilePage extends Component {
                 disabled={this.state.isLoading}
                 type="submit"
               >
-                {this.state.isLoading ? "Loading…" : "Upload"}
+                {this.state.isLoading ? "Uploading…" : "Upload"}
               </Button>
             </form>
           </Row>

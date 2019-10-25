@@ -1,10 +1,9 @@
 import axios from "axios";
 
-const USER_URL = "http://ec2-34-238-85-173.compute-1.amazonaws.com:8080";
+const USER_URL = "https://3.214.81.219:443";
 
 class ApiServices {
   addRegistery(user) {
-    alert("in");
     return axios.post(USER_URL + "/registration", user);
   }
 
@@ -21,7 +20,6 @@ class ApiServices {
   }
 
   adminList() {
-    alert("yes");
     return axios.get(USER_URL + "/adminlist");
   }
 
