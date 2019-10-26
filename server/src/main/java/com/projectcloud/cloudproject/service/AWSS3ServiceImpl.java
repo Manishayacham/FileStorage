@@ -91,7 +91,7 @@ public class AWSS3ServiceImpl implements AWSS3Service{
 	
 	public String deleteFile(String username,String fileName) {
 		try {
-			s3client.deleteObject(bucketName,username+"/"+ fileName);
+			s3client.deleteObject(bucketName,username+"/"+ fileName.replace(" ", "_"));
 			userrep.deleteFile(username,fileName);
 			return "Deleted sucessfully " + fileName;
 			}catch (Exception e) {
