@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const USER_URL = "https://3.214.81.219:443";
+const USER_URL = "https://www.server.filestorage-manishayacham.com";
 
 class ApiServices {
   addRegistery(user) {
