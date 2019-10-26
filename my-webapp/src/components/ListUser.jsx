@@ -42,6 +42,7 @@ export default class ListUser extends Component {
                 <th>Description</th>
                 <th>File size</th>
                 <th>Upload time</th>
+		<th>Update time</th>
                 <th></th>
                 <th></th>
                 <th></th>
@@ -52,8 +53,13 @@ export default class ListUser extends Component {
                 <tr id={userAndFileData.keyName}>
                   <td>{userAndFileData.keyName}</td>
                   <td>{userAndFileData.description}</td>
-                  <td>{userAndFileData.sizeOfFile}</td>
-                  <td>{userAndFileData.uploadTime}</td>
+		  <td>{(userAndFileData.sizeOfFile * 0.001).toFixed(0)} KB</td>
+                  <td>{userAndFileData.uploadTime
+                      ? new Date(userAndFileData.uploadTime).toLocaleString()
+                      : ""}</td>
+		  <td>{userAndFileData.updateTime
+                      ? new Date(userAndFileData.updateTime).toLocaleString()
+                      : ""}</td>
                   <td>
                     <a
                       className="btn btn-success"
@@ -72,6 +78,9 @@ export default class ListUser extends Component {
                     <UpdateButton
                       username={userAndFileData.username}
                       oldFileName={userAndFileData.keyName}
+		      uploadTime={new Date(
+                        userAndFileData.uploadTime
+                      ).toISOString()}
                       reloadFileList={this.reloadFileList}
                     />
                   </td>

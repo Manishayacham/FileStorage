@@ -10,7 +10,8 @@ export default class UpdateButton extends Component {
       username: this.props.username,
       oldFileName: this.props.oldFileName,
       description: "",
-      file: ""
+      file: "",
+      uploadTime: this.props.uploadTime
     };
   }
 
@@ -28,18 +29,21 @@ export default class UpdateButton extends Component {
     let handleShow = () => {
       this.setState({ open: true });
     };
-    let Upload = () => {
-      let formData = new FormData();
-      formData.append("file", this.state.file);
-      formData.append("username", this.state.username);
-      formData.append("description", this.state.description);
-      formData.append("oldFileName", this.state.oldFileName);
-
-      ApiServices.updateFile(formData).then(res => {
-        this.setState({ open: false });
-        this.props.reloadFileList();
-        alert("hi");
-      });
+    let Upload = () => {  
+    if (this.state.file.size >= 1000000) {
+        alert("Please select a file with size less than 10 MB");
+      } else {
+        let formData = new FormData();
+        formData.append("file", this.state.file);
+        formData.append("username", this.state.username);
+        formData.append("description", this.state.description);
+        formData.append("oldFileName", this.state.oldFileName);
+        formData.append("uploadTime", this.state.uploadTime);
+        ApiServices.updateFile(formData).then(res => {
+          this.setState({ open: false });
+          window.location.reload(false);
+        });
+      }
     };
 
     return (

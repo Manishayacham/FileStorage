@@ -21,7 +21,8 @@ export default class DeleteButton extends Component {
     let Confirm = () => {
       ApiServices.deleteFile(this.state.name, this.state.filename).then(res => {
         this.setState({ open: false });
-        this.props.reloadFileList();
+        alert("delete sucess");
+	window.location.reload(false);
       });
     };
 
