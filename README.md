@@ -43,5 +43,49 @@ Using File Storage web application, anyone can sign up and create an account to 
 ![image](https://user-images.githubusercontent.com/54858174/67632119-809d8f80-f85c-11e9-8f3a-82a5220d32aa.png)
 
 
+### Architecture Diagaram
+
+<img src="https://user-images.githubusercontent.com/54858174/67632131-b93d6900-f85c-11e9-98fa-f0cfb5b7f6ca.png" width="100%" height="100%">
+
+### AWS Services
+
+EC2: Hosted Client and Server on different EC2 instances. Used Image copies (AMI’s) for replicating into different Availability Zones and Multiple Regions.
+
+Classic Load Balancer: Used to distribute traffic between EC2 instances
+
+Auto Scaling Groups:  Used for monitoring application and adjust capacity of EC2 instances, to increase scalability
+
+S3: Used to store user uploaded files. Creates different folders for different users. Created life cycle and replication rules on bucket, helps in cost controls by archiving and retiring data based on specified object age
+
+S3- IA: Used for data that is infrequently accessed, requires speedy access of data
+
+Amazon Glacier: Files are archived based on the lifecycle rules created for s3 bucket
+
+Cloud Front: Used for speedy download of the user uploaded files
+
+RDS: Created project database to store and retrieve data related to user and files
+
+Route53: Used to create domain name space and hosted zones for my application
+
+Certificate Manager: Used certificate manager to generate SSL certificate for secure access of the application
+
+Cognito: Used for login functionality
+
+Lambda: Used to trigger lambda function on S3. Whenever a file is deleted by user, lambda function is invoked, a log is generated in cloud watch and an email is triggered by SNS to admin
+
+Cloud Watch: Created alarm on load balancer to check unhealthy EC2 instance and created alarm on lambda function to generate logs
+
+SNS: Create topic and subscription for admin email
+
+
+
+
+
+
+
+
+
+
+
 
 
