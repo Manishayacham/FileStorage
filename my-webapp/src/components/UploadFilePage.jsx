@@ -24,7 +24,8 @@ export default class UploadFilePage extends Component {
 
   uploadFile = async e => {
     e.preventDefault();
-     if (this.state.file.size >= 1000000) {
+    //File size will be in bytes
+     if (this.state.file.size >= 1000000000) {
       alert("Please select a file with size less than 10 MB");
     } else {
       this.setState({ isLoading: true });
