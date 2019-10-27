@@ -47,9 +47,9 @@ Using File Storage web application, anyone can sign up and create an account to 
 
 <img src="https://user-images.githubusercontent.com/54858174/67632131-b93d6900-f85c-11e9-98fa-f0cfb5b7f6ca.png" width="100%" height="100%">
 
-### AWS Services
+### AWS Services used:
 
-EC2: Hosted Client and Server on different EC2 instances. Used Image copies (AMI’s) for replicating into different Availability Zones and Multiple Regions.
+**EC2:** Hosted Client and Server on different EC2 instances. Used Image copies (AMI’s) for replicating into different Availability Zones and Multiple Regions.
 
 Classic Load Balancer: Used to distribute traffic between EC2 instances
 
