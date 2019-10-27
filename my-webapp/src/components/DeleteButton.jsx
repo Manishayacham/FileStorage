@@ -36,7 +36,7 @@ export default class DeleteButton extends Component {
           <Modal.Header closeButton>
             <Modal.Title>Delete confirmation</Modal.Title>
           </Modal.Header>
-          <Modal.Body>Confirm to delete ?</Modal.Body>
+          <Modal.Body>Confirm to delete file: {this.props.filename} ?</Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={Close}>
               Close
