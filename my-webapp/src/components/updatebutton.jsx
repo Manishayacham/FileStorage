@@ -30,7 +30,7 @@ export default class UpdateButton extends Component {
       this.setState({ open: true });
     };
     let Upload = () => {  
-    if (this.state.file.size >= 1000000) {
+    if (this.state.file.size >= 1000000000) {
         alert("Please select a file with size less than 10 MB");
       } else {
         let formData = new FormData();
