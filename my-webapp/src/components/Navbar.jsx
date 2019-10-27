@@ -42,12 +42,12 @@ export default class Navbar extends Component {
           <br />
           <Row>
             <Col>
-              <Nav variant="pills" defaultActiveKey="/list">
+              <Nav variant="pills" defaultActiveKey={this.props.activelink}>
                 <Nav.Item>
-                  <Nav.Link href="/list">list</Nav.Link>
+                  <Nav.Link href="/list">List</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link href="/upload">upload</Nav.Link>
+                  <Nav.Link href="/upload">Upload</Nav.Link>
                 </Nav.Item>
               </Nav>
             </Col>

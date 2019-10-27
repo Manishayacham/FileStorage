@@ -31,18 +31,18 @@ export default class ListUser extends Component {
     return (
       <div>
         <Container>
-          <Navbar name={this.state.username} />
+          <Navbar name={this.state.username} activelink="/list" />
           <br />
-          <h2>List Of Files</h2>
+          <h2>List of files</h2>
           <br />
           <Table striped bordered hover size="xl">
             <thead>
               <tr>
                 <th>File Name</th>
                 <th>Description</th>
-                <th>File size</th>
-                <th>Upload time</th>
-		<th>Update time</th>
+                <th>File Size</th>
+                <th>Upload Time</th>
+		<th>Update Time</th>
                 <th></th>
                 <th></th>
                 <th></th>
@@ -71,7 +71,7 @@ export default class ListUser extends Component {
                       }
                       target="_blank"
                     >
-                      DOWNLOAD
+                      Download
                     </a>
                   </td>
                   <td>

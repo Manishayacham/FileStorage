@@ -55,10 +55,10 @@ export default class UploadFilePage extends Component {
     return (
       <div>
         <Container>
-          <Navbar user={this.retriveUser} />
+          <Navbar user={this.retriveUser} activelink="/upload" />
           <Row className="justify-content-md-center">
             <form onSubmit={this.uploadFile}>
-              <h1>File Upload</h1>
+              <h1>File upload</h1>
               <input type="file" name="file" onChange={this.onChange} />
               <br />
               <br />

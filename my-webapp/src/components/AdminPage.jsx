@@ -32,18 +32,18 @@ export default class adminList extends Component {
     return (
       <div>
         <Container>
-          <Navbar name={this.state.username} />
+          <Navbar name={this.state.username} activelink="/list" />
           <br />
-          <h2>List Of Users</h2>
+          <h2>List of users</h2>
           <br />
           <Table striped bordered hover size="xl">
             <thead>
               <tr>
-                <th>UserName</th>
-                <th>RecentFileUpload/uploadTime</th>
-                <th>Storage utilized</th>
-                <th>Number of files uploaded</th>
-		<th> list of files uploaded by the user </th>
+                <th>Username</th>
+                <th>Recent File Upload/uploadTime</th>
+                <th>Storage Utilized</th>
+                <th>Number of Files Uploaded</th>
+		<th>List of Files</th>
               </tr>
             </thead>
             <tbody>
