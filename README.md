@@ -38,9 +38,9 @@ Using File Storage web application, anyone can sign up and create an account to 
 <img width="60%" height="60%" src="https://user-images.githubusercontent.com/54858174/67632562-3c14f280-f862-11e9-8446-e96e79464869.png">
 
 ### Admin page:
-<img width="60%" height="60%" src="https://user-images.githubusercontent.com/54858174/67632618-f73d8b80-f862-11e9-9f4d-a7aa0ea508a5.png">
+<img width="60%" height="60%" src="https://user-images.githubusercontent.com/54858174/67632743-f574c780-f864-11e9-8a7e-1a28a5493c3a.png">
 
-<img width="60%" height="60%" src="https://user-images.githubusercontent.com/54858174/67632623-08869800-f863-11e9-925e-73e37e373cc5.png">
+<img width="60%" height="60%" src="https://user-images.githubusercontent.com/54858174/67632748-08879780-f865-11e9-97d2-4438e6276083.png">
 
 ### Architecture Diagaram
 
