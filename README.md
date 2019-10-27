@@ -60,6 +60,8 @@ Using File Storage web application, anyone can sign up and create an account to 
 
 **Amazon Glacier:** Files are archived based on the lifecycle rules created for s3 bucket
 
+**S3-Transfer Acceleration:** Enabled on buckets for faster file upload
+
 **Cloud Front:** Used for speedy download of the user uploaded files
 
 **RDS:** Created project database to store and retrieve data related to user and files
