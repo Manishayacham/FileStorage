@@ -56,7 +56,7 @@ export default class Navbar extends Component {
             </Col>
             <Col md="auto">
               <Button onClick={this.signOut} href="/" className="signOutButton">
-                SignOut
+                Sign Out
               </Button>
             </Col>
           </Row>
