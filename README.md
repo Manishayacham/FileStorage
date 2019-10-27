@@ -78,14 +78,37 @@ Cloud Watch: Created alarm on load balancer to check unhealthy EC2 instance and 
 SNS: Create topic and subscription for admin email
 
 
+## Deployment Steps:
 
+### Deploy and Run the application using AWS services:
 
+1.	Launch EC2 instances 
+2.	Install or update yum if not available
+3.	Install Git and clone the repo
 
+#### For running client/web server:
 
+1.	Write script in user data of ec2 instances for automation to run client after launch
+2.	Below are the steps for running client manually
+    -	Install java: sudo yum install java-1.8.0-openjdk-devel
+    -	Install node/npm: yum install nodejs
+    -	Install Nginx: sudo yum install nginx
+    -	Change nginx.config file to point to the root folders of the application
+    -	Change directory to the client root folder and run following commands:
+        - npm install
+        -	npm run build
+        -	service ngnix start
 
+#### For running application server:
 
-
-
-
-
+1.	Write script in user data of ec2 instances for automation to run client after launch
+2.	Below are the steps for running application server manually:
+    - Install java: sudo yum install java-1.8.0-openjdk-devel
+    -	Install Apache Maven: sudo yum install maven
+    -	Generate access key, secretkey for having s3 bucket access.
+    -	Make changes in application.properties file (example: bucket name, access key, etc.)
+    -	Change directory to root folder of the spring boot application and run following commands:
+        -	mvn clean build- a .war file gets generated in target folder.
+        -	Change directory to target folder.
+        -	Execute java -jar <.war file name>
 
